@@ -16,6 +16,9 @@
       - libluajit-5.1-dev
       - libpugixml-dev
       - libfmt-dev
+      - libmpfr-dev 
+      - libgmp-dev 
+      - libboost-all-dev
 
 - name: Install systemd service for TFS
   template:
