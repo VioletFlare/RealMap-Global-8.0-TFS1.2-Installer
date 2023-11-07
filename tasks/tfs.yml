@@ -63,14 +63,6 @@
     target: /home/otsmanager/Nostalrius/nostalrius.sql
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
-- name: Copy config.lua.dist to config.lua if necessary
-  copy:
-    dest: /home/otsmanager/Nostalrius/config.lua
-    src: /home/otsmanager/Nostalrius/config.lua.dist
-    remote_src: yes
-    owner: otsmanager
-    group: otsmanager
-
 - name: Put mysqlHost for database in config.lua
   lineinfile:
     dest: /home/otsmanager/Nostalrius/config.lua
