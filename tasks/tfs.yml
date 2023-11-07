@@ -30,7 +30,7 @@
 
 - name: Download latest TFS from git
   git:
-    repo: https://github.com/Ezzz-dev/Nostalrius.git
+    repo: https://github.com/VioletFlare/Nostalrius.git
     dest: /home/otsmanager/Nostalrius
     version: "master"
   become: true
