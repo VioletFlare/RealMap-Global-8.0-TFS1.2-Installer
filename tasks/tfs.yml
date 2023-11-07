@@ -22,6 +22,18 @@
       - libgmp-dev 
       - libboost-all-dev
 
+- name: Create symlink for clang
+  hosts: all
+  vars:
+    mylink: "/usr/bin/c++"
+    mysrc: "/usr/bin/clang"
+  tasks:
+    - name: Creating a symlink
+      ansible.builtin.file:
+        src: "{{ mysrc }}"
+        dest: "{{ mylink }}"
+        state: link
+
 - name: Install systemd service for TFS
   template:
     src: templates/{{item}}
