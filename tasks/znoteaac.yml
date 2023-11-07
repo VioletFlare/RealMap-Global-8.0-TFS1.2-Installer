@@ -34,7 +34,7 @@
   lineinfile:
     dest: /home/otsmanager/www/public_html/config.php
     regexp: \$config\['server_path'\]
-    line: "        $config['server_path'] = '/home/otsmanager/forgottenserver';"
+    line: "        $config['server_path'] = '/home/otsmanager/Nostalrius';"
 
 - name: Import ZnoteAAC database schema
   mysql_db:

@@ -27,14 +27,14 @@
 
 - name: Download latest TFS from git
   git:
-    repo: https://github.com/otland/forgottenserver.git
-    dest: /home/otsmanager/forgottenserver
-    version: "1.4"
+    repo: https://github.com/Ezzz-dev/Nostalrius.git
+    dest: /home/otsmanager/Nostalrius
+    version: "1.2"
   become: true
   become_user: otsmanager
 
 - name: Parse existing config.lua
-  shell: grep -s mysqlPass /home/otsmanager/forgottenserver/config.lua | sed -E 's/mysqlPass = "(.*)"/\1/g'
+  shell: grep -s mysqlPass /home/otsmanager/Nostalrius/config.lua | sed -E 's/mysqlPass = "(.*)"/\1/g'
   register: existingpass
 
 - name: Generate random MySQL forgottenserver password
@@ -60,44 +60,44 @@
   mysql_db:
     name: forgottenserver
     state: import
-    target: /home/otsmanager/forgottenserver/schema.sql
+    target: /home/otsmanager/Nostalrius/schema.sql
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
 - name: Copy config.lua.dist to config.lua if necessary
   copy:
-    dest: /home/otsmanager/forgottenserver/config.lua
-    src: /home/otsmanager/forgottenserver/config.lua.dist
+    dest: /home/otsmanager/Nostalrius/config.lua
+    src: /home/otsmanager/Nostalrius/config.lua.dist
     remote_src: yes
     owner: otsmanager
     group: otsmanager
 
 - name: Put mysqlHost for database in config.lua
   lineinfile:
-    dest: /home/otsmanager/forgottenserver/config.lua
+    dest: /home/otsmanager/Nostalrius/config.lua
     regexp: ^mysqlHost
     line: 'mysqlHost = "localhost"'
 
 - name: Put mysqlSock for database in config.lua
   lineinfile:
-    dest: /home/otsmanager/forgottenserver/config.lua
+    dest: /home/otsmanager/Nostalrius/config.lua
     regexp: ^mysqlSock
     line: 'mysqlSock = "/var/run/mysqld/mysqld.sock"'
 
 - name: Put password for database in config.lua
   lineinfile:
-    dest: /home/otsmanager/forgottenserver/config.lua
+    dest: /home/otsmanager/Nostalrius/config.lua
     regexp: ^mysqlPass
     line: 'mysqlPass = "{{mysql_forgottenserver_pass}}"'
 
 - name: Put server's IP address in config.lua
   lineinfile:
-    dest: /home/otsmanager/forgottenserver/config.lua
+    dest: /home/otsmanager/Nostalrius/config.lua
     regexp: "^ip ="
     line: 'ip = "{{ansible_default_ipv4.address}}"'
 
 - name: Create build directory
   file:
-    path: /home/otsmanager/forgottenserver/build
+    path: /home/otsmanager/Nostalrius/build
     owner: otsmanager
     group: otsmanager
     mode: 0755
@@ -108,7 +108,7 @@
 - name: Cmake forgottenserver source
   command: cmake ..
   args:
-    chdir: /home/otsmanager/forgottenserver/build
+    chdir: /home/otsmanager/Nostalrius/build
   tags: compile
   become: true
   become_user: otsmanager
@@ -116,7 +116,7 @@
 - name: Compile forgottenserver source
   command: make -j2
   args:
-    chdir: /home/otsmanager/forgottenserver/build
+    chdir: /home/otsmanager/Nostalrius/build
   tags: compile
   become: true
   become_user: otsmanager

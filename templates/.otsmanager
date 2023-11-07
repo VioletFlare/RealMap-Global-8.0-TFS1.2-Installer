@@ -7,7 +7,7 @@ alias enable='sudo systemctl enable'
 alias disable='sudo systemctl disable'
 alias log='journalctl -u'
 alias follow='journalctl -f -u'
-alias updatetfs='cd /home/otsmanager/forgottenserver && git pull && rm -rf build && mkdir -p build && cd build && cmake .. && make && cd'
+alias updatetfs='cd /home/otsmanager/Nostalrius && git pull && rm -rf build && mkdir -p build && cd build && cmake .. && make && cd'
 alias duedate=`echo date -d $(curl -m 1 -s https://otshosting.pl/api/otshosting/expires)`
 function GetLocalIP()
 {

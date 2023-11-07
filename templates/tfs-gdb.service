@@ -7,8 +7,8 @@ Conflicts=tfs.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/gdb -q -batch -ex "handle SIGTERM nostop pass" -ex "handle SIGINT nostop pass" -ex "handle SIGHUP nostop pass" -ex "handle SIGUSR1 nostop pass" -ex "run" -ex "thread apply all backtrace" /home/otsmanager/forgottenserver/build/tfs
-WorkingDirectory=/home/otsmanager/forgottenserver
+ExecStart=/usr/bin/gdb -q -batch -ex "handle SIGTERM nostop pass" -ex "handle SIGINT nostop pass" -ex "handle SIGHUP nostop pass" -ex "handle SIGUSR1 nostop pass" -ex "run" -ex "thread apply all backtrace" /home/otsmanager/Nostalrius/build/tfs
+WorkingDirectory=/home/otsmanager/Nostalrius
 User=otsmanager
 Group=otsmanager
 Restart=always
