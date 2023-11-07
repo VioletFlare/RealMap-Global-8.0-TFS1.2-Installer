@@ -5,7 +5,9 @@
     pkg:
       - git
       - cmake
-      - build-essential
+      - clang-14 
+      - lld-14
+      - make
       - libmysqlclient-dev
       - libboost-system-dev
       - libboost-date-time-dev
