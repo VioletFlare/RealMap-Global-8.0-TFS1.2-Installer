@@ -5,8 +5,9 @@
     pkg:
       - git
       - cmake
-      - clang-14 
-      - lld-14
+      - clang
+      - clang++
+      - lld
       - make
       - libmysqlclient-dev
       - libboost-system-dev
