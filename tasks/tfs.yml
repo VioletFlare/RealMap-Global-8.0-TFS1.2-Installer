@@ -60,7 +60,7 @@
   mysql_db:
     name: forgottenserver
     state: import
-    target: /home/otsmanager/Nostalrius/schema.sql
+    target: /home/otsmanager/Nostalrius/nostalrius.sql
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
 - name: Copy config.lua.dist to config.lua if necessary
