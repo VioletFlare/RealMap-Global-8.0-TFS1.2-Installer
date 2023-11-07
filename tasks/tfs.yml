@@ -23,7 +23,6 @@
       - libboost-all-dev
 
 - name: Create symlink for clang
-  hosts: all
   vars:
     mylink: "/usr/bin/c++"
     mysrc: "/usr/bin/clang"
