@@ -6,7 +6,6 @@
       - git
       - cmake
       - clang
-      - clang++
       - lld
       - make
       - libmysqlclient-dev
