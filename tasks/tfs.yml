@@ -22,16 +22,13 @@
       - libgmp-dev 
       - libboost-all-dev
 
-- name: Create symlink for clang
-  vars:
-    mylink: "/usr/bin/c++"
-    mysrc: "/usr/bin/clang"
-  tasks:
-    - name: Creating a symlink
-      ansible.builtin.file:
-        src: "{{ mysrc }}"
-        dest: "{{ mylink }}"
-        state: link
+- name: Create a symbolic link for CLANG
+  ansible.builtin.file:
+    src: /usr/bin/clang
+    dest: /usr/bin/c++
+    owner: otsmanager
+    group: otsmanager
+    state: link
 
 - name: Install systemd service for TFS
   template:
