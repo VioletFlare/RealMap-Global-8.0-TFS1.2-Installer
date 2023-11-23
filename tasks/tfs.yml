@@ -28,13 +28,13 @@
 - name: Download latest TFS from git
   git:
     repo: https://github.com/VioletFlare/RealMap-Global-8.0-TFS1.2.git
-    dest: /home/otsmanager/Nostalrius
+    dest: /home/otsmanager/RMPG8
     version: "main"
   become: true
   become_user: otsmanager
 
 - name: Parse existing config.lua
-  shell: grep -s mysqlPass /home/otsmanager/Nostalrius/config.lua | sed -E 's/mysqlPass = "(.*)"/\1/g'
+  shell: grep -s mysqlPass /home/otsmanager/RMPG8/config.lua | sed -E 's/mysqlPass = "(.*)"/\1/g'
   register: existingpass
 
 - name: Generate random MySQL forgottenserver password
@@ -60,36 +60,36 @@
   mysql_db:
     name: forgottenserver
     state: import
-    target: /home/otsmanager/Nostalrius/nostalrius.sql
+    target: /home/otsmanager/RMPG8/znote_schema.sql
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
 - name: Put mysqlHost for database in config.lua
   lineinfile:
-    dest: /home/otsmanager/Nostalrius/config.lua
+    dest: /home/otsmanager/RMPG8/config.lua
     regexp: ^mysqlHost
     line: 'mysqlHost = "localhost"'
 
 - name: Put mysqlSock for database in config.lua
   lineinfile:
-    dest: /home/otsmanager/Nostalrius/config.lua
+    dest: /home/otsmanager/RMPG8/config.lua
     regexp: ^mysqlSock
     line: 'mysqlSock = "/var/run/mysqld/mysqld.sock"'
 
 - name: Put password for database in config.lua
   lineinfile:
-    dest: /home/otsmanager/Nostalrius/config.lua
+    dest: /home/otsmanager/RMPG8/config.lua
     regexp: ^mysqlPass
     line: 'mysqlPass = "{{mysql_forgottenserver_pass}}"'
 
 - name: Put server's IP address in config.lua
   lineinfile:
-    dest: /home/otsmanager/Nostalrius/config.lua
+    dest: /home/otsmanager/RMPG8/config.lua
     regexp: "^ip ="
     line: 'ip = "{{ansible_default_ipv4.address}}"'
 
 - name: Create build directory
   file:
-    path: /home/otsmanager/Nostalrius/build
+    path: /home/otsmanager/RMPG8/build
     owner: otsmanager
     group: otsmanager
     mode: 0755
@@ -100,7 +100,7 @@
 - name: Cmake forgottenserver source
   command: cmake ..
   args:
-    chdir: /home/otsmanager/Nostalrius/build
+    chdir: /home/otsmanager/RMPG8/build
   tags: compile
   become: true
   become_user: otsmanager
@@ -108,7 +108,7 @@
 - name: Compile forgottenserver source
   command: make -j2
   args:
-    chdir: /home/otsmanager/Nostalrius/build
+    chdir: /home/otsmanager/RMPG8/build
   tags: compile
   become: true
   become_user: otsmanager

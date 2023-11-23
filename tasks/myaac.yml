@@ -10,7 +10,7 @@
   lineinfile:
     dest: /home/otsmanager/www/public_html/config.php
     regexp: "'server_path' =>"
-    line: "	'server_path' => '/home/otsmanager/Nostalrius/',"
+    line: "	'server_path' => '/home/otsmanager/RMPG8/',"
 
 - name: Configure friendly_urls
   lineinfile:

@@ -6,8 +6,8 @@ After=network-online.target mysql.service
 
 [Service]
 Type=simple
-ExecStart=/home/otsmanager/Nostalrius/build/tfs
-WorkingDirectory=/home/otsmanager/Nostalrius
+ExecStart=/home/otsmanager/RMPG8/build/tfs
+WorkingDirectory=/home/otsmanager/RMPG8
 User=otsmanager
 Group=otsmanager
 Restart=always
