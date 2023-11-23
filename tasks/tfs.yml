@@ -107,7 +107,7 @@
   become_user: otsmanager
 
 - name: Compile forgottenserver source
-  command: make -j2 CXXFLAGS="-lgmp"
+  command: make -j2 CFLAGS="-lgmp"
   args:
     chdir: /home/otsmanager/RMPG8/build
   tags: compile
