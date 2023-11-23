@@ -29,7 +29,7 @@
   git:
     repo: https://github.com/VioletFlare/RealMap-Global-8.0-TFS1.2.git
     dest: /home/otsmanager/Nostalrius
-    version: "master"
+    version: "main"
   become: true
   become_user: otsmanager
 
