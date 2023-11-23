@@ -17,14 +17,6 @@
       - libpugixml-dev
       - libfmt-dev
 
-- name: Create a symbolic link for CLANG
-  ansible.builtin.file:
-    src: /usr/bin/clang
-    dest: /usr/bin/c++
-    owner: otsmanager
-    group: otsmanager
-    state: link
-
 - name: Install systemd service for TFS
   template:
     src: templates/{{item}}
