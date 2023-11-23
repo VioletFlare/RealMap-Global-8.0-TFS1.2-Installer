@@ -5,9 +5,7 @@
     pkg:
       - git
       - cmake
-      - clang
-      - lld
-      - make
+      - build-essential
       - libmysqlclient-dev
       - libboost-system-dev
       - libboost-date-time-dev
@@ -18,9 +16,6 @@
       - libluajit-5.1-dev
       - libpugixml-dev
       - libfmt-dev
-      - libmpfr-dev 
-      - libgmp-dev 
-      - libboost-all-dev
 
 - name: Create a symbolic link for CLANG
   ansible.builtin.file:
@@ -40,7 +35,7 @@
 
 - name: Download latest TFS from git
   git:
-    repo: https://github.com/VioletFlare/Nostalrius.git
+    repo: https://github.com/VioletFlare/RealMap-Global-8.0-TFS1.2.git
     dest: /home/otsmanager/Nostalrius
     version: "master"
   become: true
