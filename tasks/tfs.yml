@@ -61,7 +61,7 @@
   mysql_db:
     name: forgottenserver
     state: import
-    target: /home/otsmanager/RMPG8/znote_schema.sql
+    target: /home/otsmanager/RMPG8/schema.sql
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
 - name: Put mysqlHost for database in config.lua

@@ -1,8 +1,9 @@
 ---
 - name: Clone ZnoteAAC from Github
   git:
-    repo: https://github.com/Znote/ZnoteAAC.git
+    repo: https://github.com/VioletFlare/ZnoteAAC.git
     dest: /home/otsmanager/www/public_html
+    version: "main"
   become: true
   become_user: otsmanager
 
